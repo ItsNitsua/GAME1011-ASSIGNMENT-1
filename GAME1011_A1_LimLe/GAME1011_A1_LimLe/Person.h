@@ -4,8 +4,8 @@
 
 using namespace std; 
 
-enum College {GeorgeBrown, Senica, Humber};
-enum Program {GamePrograming, Bussiness, Designer };
+enum College {NON, GeorgeBrown, Senica, Humber};
+enum Program {NONE, GamePrograming, Bussiness, Designer };
 class Person
 {
 private:
@@ -45,4 +45,23 @@ public:
 	virtual void DisplayInfo() const;
 };
 
+class NonGaming : public Student
+{
+private:
+	bool m_prefer;
+	int m_hourspeding;
+
+public:
+	NonGaming();
+	NonGaming( bool prfr, int hour);
+	~NonGaming();
+
+	void setStreaming(bool prfr);
+	void setHourStream(int hour);
+
+	bool getStreaming();
+	int getHourStream();
+
+
+};
 #endif

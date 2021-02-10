@@ -40,8 +40,8 @@ int Person::getPersonAge() const
 
 Student::Student()
 {
-	m_school = " ";
-	m_pro = " ";
+	m_school = NON;
+	m_pro = NONE;
 	m_enroll = 0;
 }
 
@@ -88,4 +88,40 @@ int Student::getEnrollment() const
 void Student::DisplayInfo() const
 {
 
+}
+
+NonGaming::NonGaming()
+{
+	m_hourspeding = 0;
+	m_prefer = false;
+}
+
+NonGaming::NonGaming( bool prfr, int hour) 
+{
+	m_hourspeding = hour;
+	m_prefer = prfr;
+}
+
+NonGaming::~NonGaming()
+= default;
+
+
+void NonGaming::setStreaming(bool prfr)
+{
+	 m_prefer = prfr;
+}
+
+void NonGaming::setHourStream(int hour)
+{
+	m_hourspeding = hour;
+}
+
+bool NonGaming::getStreaming()
+{
+	return m_prefer;
+}
+
+int NonGaming::getHourStream()
+{
+	return m_hourspeding;
 }
