@@ -49,12 +49,32 @@ class NonGaming : public Student
 {
 private:
 	bool m_prefer;
-	int m_hourspeding;
+	int m_hourspending;
 
 public:
 	NonGaming();
 	NonGaming( bool prfr, int hour);
 	~NonGaming();
+
+	void setStreaming(bool prfr);
+	void setHourStream(int hour);
+
+	bool getStreaming();
+	int getHourStream();
+
+
+};
+
+class Gaming : public Student
+{
+private:
+	bool m_prefer;
+	int m_hourspending;
+
+public:
+	Gaming();
+	Gaming(bool prfr, int hour);
+	~Gaming();
 
 	void setStreaming(bool prfr);
 	void setHourStream(int hour);

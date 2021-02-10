@@ -89,39 +89,39 @@ void Student::DisplayInfo() const
 {
 
 }
-
-NonGaming::NonGaming()
+// Gaming class
+Gaming::Gaming()
 {
-	m_hourspeding = 0;
+	m_hourspending = 0;
 	m_prefer = false;
 }
 
-NonGaming::NonGaming( bool prfr, int hour) 
+Gaming::Gaming( bool prfr, int hour) 
 {
-	m_hourspeding = hour;
+	m_hourspending = hour;
 	m_prefer = prfr;
 }
 
-NonGaming::~NonGaming()
+Gaming::~Gaming()
 = default;
 
 
-void NonGaming::setStreaming(bool prfr)
+void Gaming::setStreaming(bool prfr)
 {
 	 m_prefer = prfr;
 }
 
-void NonGaming::setHourStream(int hour)
+void Gaming::setHourStream(int hour)
 {
-	m_hourspeding = hour;
+	m_hourspending = hour;
 }
 
-bool NonGaming::getStreaming()
+bool Gaming::getStreaming()
 {
 	return m_prefer;
 }
 
-int NonGaming::getHourStream()
+int Gaming::getHourStream()
 {
-	return m_hourspeding;
+	return m_hourspending;
 }
