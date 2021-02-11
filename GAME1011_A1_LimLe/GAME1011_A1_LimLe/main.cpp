@@ -18,7 +18,7 @@ int main()
 	int ranforcollege;
 	int ranforprogram;
 	int ranforage;
-
+	//hi
 	int hoursSpend[3] = { 5, 10 ,15 };
 
 	cout << "How many do you want in your student survey?" << endl;
