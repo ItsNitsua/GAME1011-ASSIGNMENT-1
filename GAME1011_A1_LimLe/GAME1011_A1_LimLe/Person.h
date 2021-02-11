@@ -4,8 +4,8 @@
 
 using namespace std; 
 
-enum College {NON, GeorgeBrown, Senica, Humber};
-enum Program {NONE, GamePrograming, Bussiness, Designer };
+
+
 class Person
 {
 private:
@@ -15,6 +15,7 @@ private:
 public:
 	Person();
 	Person(string name, int age);
+	Person(int age);
 	~Person();
 
 	void setName(string name);
@@ -22,45 +23,45 @@ public:
 
 	string getPersonName() const;
 	int getPersonAge() const;
-	virtual void DisplayInfo() const = 0;
+	virtual void DisplayInfo() = 0;
 };
 
 class Student : public Person
 {
 private:
-	College m_school;
-	Program m_pro;
+	string m_school;
+	string m_pro;
 	int m_enroll;
 public:
 	Student();
-	Student(College scho, Program prog, int enroll);
+	Student(string scho, string prog, int enroll, int age);
 	~Student();
-	void setCollege(College scho);
-	void setProgram(Program prog);
+	void setCollege(string scho);
+	void setProgram(string prog);
 	void setEnrollment(int enroll);
 
-	College getCollege() const;
-	Program getProgarm() const;
+	string getCollege() const;
+	string getProgarm() const;
 	int getEnrollment() const;
-	virtual void DisplayInfo() const;
+	virtual void DisplayInfo() ;
 };
 
 class NonGaming : public Student
 {
 private:
-	bool m_prefer;
+	string m_prefer;
 	int m_hourspending;
 
 public:
 	NonGaming();
-	NonGaming( bool prfr, int hour);
+	NonGaming( string prfr, int hour, string scho, string prog, int enroll, int age);
 	~NonGaming();
 
 	void setStreaming(bool prfr);
 	void setHourStream(int hour);
 
-	bool getStreaming();
-	int getHourStream();
+	string getStreaming() const;
+	int getHourStream() const;
 
 
 };
@@ -68,20 +69,35 @@ public:
 class Gaming : public Student
 {
 private:
-	bool m_prefer;
+	string m_prefer;
 	int m_hourspending;
 
 public:
 	Gaming();
-	Gaming(bool prfr, int hour);
+	Gaming(string prfr, int hour, string scho, string prog, int enroll, int age);
 	~Gaming();
 
-	void setStreaming(bool prfr);
-	void setHourStream(int hour);
+	void setGaming(bool prfr);
+	void setHourGaming(int hour);
 
-	bool getStreaming();
-	int getHourStream();
+	string getGaming() const;
+	int getHourGaming() const;
+
+};
 
 
+class Survey
+{
+private:
+	int m_averageAge;
+	int m_averageHour;
+	string most_preferNG;
+	string most_preferG;
+public:
+	virtual void DisplayInfo() ;
+	void setAA(int age, int total) ;
+	void setAH(int hour, int total) ;
+	int getAA();
+	int getAH();
 };
 #endif
