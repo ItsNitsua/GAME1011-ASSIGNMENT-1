@@ -91,7 +91,7 @@ int Student::getEnrollment() const
 	return m_enroll;
 }
 
-void Student::DisplayInfo() const
+void Student::DisplayInfo()
 {
 
 }
