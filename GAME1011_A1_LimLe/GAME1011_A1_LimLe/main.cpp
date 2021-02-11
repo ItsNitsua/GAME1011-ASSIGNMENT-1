@@ -6,8 +6,11 @@
 using namespace std;
 int main()
 {
-	string college[3] = { "GeorgeBrown", "Senica", "Humber" };
-	string Program[3] = {"GamePrograming", "Bussiness", "Designer" };
+	string college[3] = { "GeorgeBrown", "Senaca", "Humber" };
+	string Program[3] = { "GamePrograming", "Business", "Designer" };
+
+	string gamingDevices[3] = { "NintendoSwitch", "Playstation", "Xbox" };
+	string nongamingDevices[3] = { "Books", "BoardGames", "Sports" };
 
 	int participantsSize;
 	int totalAA;
@@ -16,6 +19,7 @@ int main()
 	int ranforprogram;
 	int ranforage;
 
+	int hoursSpend[3] = { 5, 10 ,15 };
 
 	cout << "How many do you want in your student survey?" << endl;
 	cin >> participantsSize;
