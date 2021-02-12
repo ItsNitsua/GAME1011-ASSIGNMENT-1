@@ -81,7 +81,7 @@ string Student::getCollege() const
 	return m_school;
 }
 
-string Student::getProgarm() const
+string Student::getProgram() const
 {
 	return m_pro;
 }
@@ -112,7 +112,7 @@ Gaming::~Gaming()
 = default;
 
 
-void Gaming::setGaming(bool prfr)
+void Gaming::setGaming(string prfr)
 {
 	 m_prefer = prfr;
 }
@@ -131,6 +131,9 @@ int Gaming::getHourGaming() const
 {
 	return m_hourspending;
 }
+void Gaming::DisplayInfor()  const
+{
+}
 // NonGaming
 NonGaming::NonGaming()
 {
@@ -147,7 +150,7 @@ NonGaming::NonGaming(string prfr, int hour,string scho, string prog, int enroll,
 NonGaming::~NonGaming()
 = default;
 
-void NonGaming::setStreaming(bool prfr)
+void NonGaming::setStreaming(string prfr)
 {
 	m_prefer = prfr;
 }
@@ -167,15 +170,103 @@ int NonGaming::getHourStream() const
 	return m_hourspending;
 }
 
-void Survey::DisplayInfo() 
+void NonGaming::DisplayInfor() const
+{
+	cout << "The average age of Non Gaming students " << endl;
+}
+
+
+
+
+
+void Survey::DisplayInfo() const
 {
 	cout << "The average age of Non Gaming students " << getAA() << endl;
+}
+
+Survey::Survey()
+{
+	m_age = 0;
+	m_enroll = 0;
+	m_pro = " ";
+	m_school = "";
+	m_hourspending = 0;
+	m_prefer = "";
+}
+
+Survey::Survey(string prfr, int hour, string scho, string prog, int enroll, int age)
+{
+	m_age = age;
+	m_enroll = enroll;
+	m_pro = prog;
+	m_school = scho;
+	m_hourspending = hour;
+	m_prefer = prfr;
+}
+
+void Survey::setAge(int age)
+{
+	m_age = age;
+}
+
+int Survey::getPersonAge() const
+{
+	return m_age;
+}
+
+void Survey::setCollege(string scho)
+{
+	m_school = scho;
+}
+
+void Survey::setProgram(string prog)
+{
+	m_pro = prog;
+}
+
+void Survey::setEnrollment(int enroll)
+{
+	m_enroll = enroll;
+}
+
+string Survey::getCollege() const
+{
+	return m_school;
+}
+
+string Survey::getProgarm() const
+{
+	return m_pro;
+}
+
+int Survey::getEnrollment() const
+{
+	return m_enroll;
+}
+
+void Survey::setPrefer(string prfr)
+{
+	m_prefer = prfr;
+}
+
+void Survey::setHourPrefer(int hour)
+{
+	m_hourspending = hour;
+}
+
+string Survey::getPrefer() const
+{
+	return m_prefer;
+}
+
+int Survey::getHourPrefer() const
+{
+	return m_hourspending;
 }
 
 void Survey::setAA(int age,int total) 
 {
 	m_averageAge = age / total;
-
 }
 
 void Survey::setAH(int hour, int total) 
@@ -183,13 +274,51 @@ void Survey::setAH(int hour, int total)
 	m_averageHour = hour / total;
 }
 
-int Survey::getAA()
+int Survey::getAA() const
 {
 	return m_averageAge;
 }
 
-int Survey::getAH()
+int Survey::getAH() const
 {
 	return m_averageHour;
 }
+void Survey::setAA2(int age, int total)
+{
+	m_averageAge2 = age / total;
+}
+
+void Survey::setAH2(int hour, int total)
+{
+	m_averageHour2 = hour / total;
+}
+
+int Survey::getAA2() const
+{
+	return m_averageAge2;
+}
+
+int Survey::getAH2() const
+{
+	return m_averageHour2;
+}
+
+void Survey::setTotalGaming(int total)
+{
+}
+
+void Survey::setTotalNonGaming(int total)
+{
+}
+
+int Survey::getTotalGaming() const
+{
+	return 0;
+}
+
+int Survey::getTotalNonGaming() const
+{
+	return 0;
+}
+
 
