@@ -1,19 +1,23 @@
+//LeNguyenTruongHai-AustinLim 
 #include <iostream>
 #include <string>
 #include <cstdlib>
 #include "Person.h"
+#include <ctime>
 
 using namespace std;
 int main()
 {
-	string college[3] = { "GeorgeBrown", "Senica", "Humber" };
-	string Program[3] = { "GamePrograming", "Bussiness", "Designer" };
-	string gamingDevice[3] = { "NintendoSwitch, Xbox, Playstation" };
-	string nongamingDevice[3] = { "Sports, Books, BoardGames" };
-    int hoursSpend[3] = { 5, 10 ,15 };
-	int age[5] = {20,21,22,23,25};
+	//array
+	string college[3] = { "GeorgeBrown", "Seneca", "Humber" };
+	string Program[3] = { "GamePrograming", "Business", "Designer" };
+	string gamingDevice[3] = { "NintendoSwitch", "Xbox", "Playstation" };
+	string nongamingDevice[3] = { "Sports", "Books", "BoardGames" };
+    int hoursSpend[3] = { 8, 10 ,15 };
+	int age[5] = {18,21,24,26,22};
 	int enroll[3] = {1,2,3};
-
+	//process
+	bool maxium = true;
 	int participantsSize;
 	int totalAA_nongaming = 0;
 	int totalAA_gaming = 0;
@@ -21,6 +25,13 @@ int main()
 	int totalHour_gaming = 0;
 	int nonGaming = 0;
 	int ggaming = 0;
+	int itemNG1 = 0;
+	int itemNG2 = 0;
+	int itemNG3 = 0;
+	int itemG1 = 0;
+	int itemG2 = 0;
+	int itemG3 = 0;
+	//random
 	int ranformainpurpose;
 	int ranforenroll;
 	int ranforcollege;
@@ -33,11 +44,25 @@ int main()
 	//hi
 	
 
-
+	srand(unsigned (time(NULL)));
 	cout << "How many do you want in your student survey?" << endl;
 	cin >> participantsSize;
+	while (maxium == true)
+	{
+		if (participantsSize > 500 || participantsSize < 0)
+		{
+			cout << "Please chose between 0 to 500 " << endl;
+			cout << "How many do you want in your student survey?" << endl;
+			cin >> participantsSize;
+		}
+		else
+		{
+			maxium = false;
+		}
+	}
+
 	Survey* survey = new Survey[participantsSize];
-	Survey survayProcess;
+	Survey surveyProcess;
 	NonGaming nongaming;
 	Gaming gaming;
 
@@ -52,7 +77,7 @@ int main()
 		//Non-Gaming counter
 		if (ranformainpurpose == 0)
 		{
-			nonGaming++;
+			//cout << ranforage << endl;
 			ranforstreaming = rand() % 3;
 			nongaming = {nongamingDevice[ranforstreaming], hoursSpend[ranforhour],college[ranforcollege],Program[ranforprogram],enroll[ranforenroll], age[ranforage] };
 			survey[i].setCollege(nongaming.getCollege());
@@ -61,13 +86,26 @@ int main()
 			survey[i].setProgram(nongaming.getProgram());
 			survey[i].setEnrollment(nongaming.getEnrollment());
 			survey[i].setAge(nongaming.getPersonAge());
-			totalAA_nongaming += survey[i].getPersonAge() ;
+			totalAA_nongaming += survey[i].getPersonAge();
 			totalHour_nongaming += survey[i].getHourPrefer();
+			nonGaming++;
+			if (ranforstreaming == 0)
+			{
+				itemNG1++;
+			}
+			else if (ranforstreaming == 1)
+			{
+				itemNG2++;
+			}
+			else if (ranforstreaming == 2)
+			{
+				itemNG3++;
+			}
 		}
 		//Gaming counter
 		else if (ranformainpurpose == 1)
 		{
-			ggaming++;
+			//cout << ranforage << endl;
 			ranforgaming = rand() % 3;
 			gaming = { gamingDevice[ranforgaming], hoursSpend[ranforhour],college[ranforcollege],Program[ranforprogram],enroll[ranforenroll], age[ranforage] };
 			survey[i].setCollege(gaming.getCollege());
@@ -78,10 +116,38 @@ int main()
 			survey[i].setAge(gaming.getPersonAge());
 			totalAA_gaming += survey[i].getPersonAge();
 			totalHour_gaming += survey[i].getHourPrefer();
+			ggaming++;
+			if (ranforgaming == 0)
+			{
+				itemG1++;
+			}
+			else if (ranforgaming == 1)
+			{
+				itemG2++;
+			}
+			else if (ranforgaming == 2)
+			{
+				itemG3++;
+			}
 		}
 	}
-	survayProcess.setAA2(totalAA_gaming, ggaming);
-	survayProcess.setAH2(totalHour_gaming, ggaming);
-	survayProcess.setAA(totalAA_nongaming, nonGaming);
-	survayProcess.setAA(totalHour_nongaming, nonGaming);
+	//cout << itemNG1 << endl;
+	//cout << itemNG2 << endl;
+	//cout << itemNG3 << endl;
+	//cout << itemG1 << endl;
+	//cout << itemG2 << endl;
+	//cout << itemG3 << endl;
+	surveyProcess.setMostPreferNG(itemNG1, itemNG2, itemNG3, nongamingDevice[0], nongamingDevice[1], nongamingDevice[2]);
+	surveyProcess.setMostPreferG(itemG1, itemG2, itemG3, gamingDevice[0], gamingDevice[1], gamingDevice[2]);
+	surveyProcess.setTotalGaming(ggaming);
+	surveyProcess.setTotalNonGaming(nonGaming);
+	surveyProcess.setAA2(totalAA_gaming, ggaming);
+	surveyProcess.setAH2(totalHour_gaming, ggaming);
+	surveyProcess.setAA(totalAA_nongaming, nonGaming);
+	surveyProcess.setAH(totalHour_nongaming, nonGaming);
+	//Display
+	surveyProcess.DisplayInfo();
+	system("Pause");
+	delete[] survey;
+	return 0;
 }

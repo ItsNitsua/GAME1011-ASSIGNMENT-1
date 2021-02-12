@@ -181,7 +181,15 @@ void NonGaming::DisplayInfor() const
 
 void Survey::DisplayInfo() const
 {
-	cout << "The average age of Non Gaming students " << getAA() << endl;
+	cout << "The number of Non Gaming students: " << getTotalNonGaming() << endl;
+	cout << "The average age: " << getAA() << endl;
+	cout << "The most prefer streaming device: " << getMostPreferNG() << endl;
+	cout << "The average hour spending: " << getAH() << endl;
+	cout << "====================================================" << endl;
+	cout << "The number of Gaming students: " << getTotalGaming() << endl;
+	cout << "The average age: " << getAA2() << endl;
+	cout << "The most prefer gaming device: " << getMostPreferG() << endl;
+	cout << "The average hour spending: " << getAH2() << endl;
 }
 
 Survey::Survey()
@@ -263,15 +271,30 @@ int Survey::getHourPrefer() const
 {
 	return m_hourspending;
 }
+// Processing
 
 void Survey::setAA(int age,int total) 
 {
-	m_averageAge = age / total;
+	if (total == 0)
+	{
+		m_averageAge = 0;
+	}
+	else
+	{
+		m_averageAge = age / total;
+	}
 }
 
 void Survey::setAH(int hour, int total) 
 {
-	m_averageHour = hour / total;
+	if (total == 0)
+	{
+		m_averageHour = 0;
+	}
+	else
+	{
+		m_averageHour = hour / total;
+	}
 }
 
 int Survey::getAA() const
@@ -285,12 +308,27 @@ int Survey::getAH() const
 }
 void Survey::setAA2(int age, int total)
 {
-	m_averageAge2 = age / total;
+	if (total == 0)
+	{
+		m_averageAge2 = 0;
+	}
+	else
+	{
+		m_averageAge2 = age / total;
+	}
+	
 }
 
 void Survey::setAH2(int hour, int total)
 {
-	m_averageHour2 = hour / total;
+	if (total == 0)
+	{
+		m_averageHour2 = 0;
+	}
+	else
+	{
+		m_averageHour2 = hour / total;
+	}
 }
 
 int Survey::getAA2() const
@@ -305,20 +343,102 @@ int Survey::getAH2() const
 
 void Survey::setTotalGaming(int total)
 {
+	if (total == 0)
+	{
+		m_totalGaming = 0;
+	}
+	else
+	{
+		m_totalGaming = total;
+	}
 }
 
 void Survey::setTotalNonGaming(int total)
 {
+	if (total == 0)
+	{
+		m_totalNonGaming = 0;
+	}
+	else
+	{
+		m_totalNonGaming = total;
+	}
 }
 
 int Survey::getTotalGaming() const
 {
-	return 0;
+	return m_totalGaming;
 }
 
 int Survey::getTotalNonGaming() const
 {
-	return 0;
+	return m_totalNonGaming;
 }
+
+void Survey::setMostPreferNG(int first, int second, int third, string item1, string item2, string item3)
+{
+	string drawOp = "Same with all three";
+	if (first > (second && third))
+	{
+		m_preferNG = item1;
+	}
+	else if (second > (first && third))
+	{
+		m_preferNG = item2;
+	}
+	else if (third > (first && second))
+	{
+		m_preferNG = item3;
+	}
+	else if ((third == second == first) == 0)
+	{
+		m_preferNG = "NONE";
+	}
+	else if (third == second == first)
+	{
+		m_preferNG = drawOp;
+	}
+	
+}
+
+void Survey::setMostPreferG(int first, int second, int third, string item1, string item2, string item3)
+{
+	string drawOp = "Same with all three";
+	if (first > (second && third))
+	{
+		m_preferG = item1;
+	}
+	else if (second > (first && third))
+	{
+		m_preferG = item2;
+	}
+	else if (third > (first && second))
+	{
+		m_preferG = item3;
+	}
+	else if ((third == second == first) == 0)
+	{
+		m_preferG = "NONE";
+	}
+	else if (third == second == first)
+	{
+		m_preferG = drawOp;
+	}
+	
+}
+
+string Survey::getMostPreferNG() const
+{
+	return m_preferNG;
+}
+
+string Survey::getMostPreferG() const
+{
+	return m_preferG;
+}
+
+
+
+
 
 

@@ -93,17 +93,20 @@ private:
 	int m_averageHour;
 	int m_averageAge2;
 	int m_averageHour2;
-	string most_preferNG;
-	string most_preferG;
+	string m_preferNG;
+	string m_preferG;
 	string m_prefer;
 	int m_hourspending;
 	string m_school;
 	string m_pro;
 	int m_enroll;
 	int m_age;
+	int m_totalNonGaming;
+	int m_totalGaming;
 public:
 	
 	virtual void DisplayInfo() const;
+	//saving infor
 	Survey();
 	Survey(string prfr, int hour, string scho, string prog, int enroll, int age);
 	void setAge(int age);
@@ -118,6 +121,7 @@ public:
 	void setHourPrefer(int hour);
 	string getPrefer() const;
 	int getHourPrefer() const;
+	//process
 	void setAA(int age, int total) ;
 	void setAH(int hour, int total) ;
 	int getAA() const;
@@ -130,5 +134,9 @@ public:
 	void setTotalNonGaming(int total);
 	int getTotalGaming() const;
 	int getTotalNonGaming() const;
+	void setMostPreferNG(int first, int second, int third, string item1, string item2, string item3);
+	void setMostPreferG(int first, int second, int third, string item1, string item2, string item3);
+	string getMostPreferNG() const;
+	string getMostPreferG() const;
 };
 #endif
